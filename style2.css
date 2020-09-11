@@ -1,0 +1,64 @@
+body {background-color: #121922;color: white;font-family: Arial, Helvetica, sans-serif;}
+header {text-align: center; font-weight: normal; padding: 100px;} 
+header h1 { font-weight: bolder; font-size: 4em;} 
+header h4 {color: #648ecc;margin: 0px;font-weight: lighter;font-size: 2em;}
+footer{ color:#648ecc;text-align: center;padding: 50px;}
+.container {width: 80vw;margin: auto;}
+
+/* The collection of cards (the grid) */
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:20px;
+}
+
+/* The card */
+.card{
+    height: 15vw; /* Width is automatic - fills the available space on the row */
+    position: relative;
+    perspective: 100vw;
+    perspective-origin: 50% 50%;
+    -webkit-transition: 1.5s ease-in-out;
+	transition: 1.5s ease-in-out;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.face{ /* Common settings for both sides*/
+        width: 100%;
+        height: 100%;
+        background-position: 0 0;
+        background-size: 21vw;
+        background-repeat: no-repeat;
+        backface-visibility: hidden;
+        position: absolute;
+        box-shadow: 0px 1.2vw 2vw -1vw rgba(0, 0, 0, 0.6);
+        border-radius: 20px;
+    }
+    .front{
+        background-color: #648ecc;
+        transform: rotateX(0deg);
+        background-size: cover;
+        background-position: center;
+        z-index: 2;
+     }
+    .back{
+        background-color: white;
+        background-size: cover;
+        transform: rotateY(180deg);
+        z-index: 0;
+    }
+    .content { /* Used for text / image content within the card*/
+        transform: translatez(80px) scale(0.8);
+        text-align: center;
+}
+.card:hover { /* Initiates the flip when hovering over card, or tapping it on mobile */
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+/* FRONT SIDE - To switch between images, use class identifiers in html */
+.f1 { background-image: url(./images/skills/photoshop.jpg); }
+.f2 { background-image: url(./images/skills/illustrator.jpg); }
+
+/* BACK SIDE - To switch between images, use class identifiers in html */
+.b1 { background-image: url(./images/skills/Skills-10.png); }
